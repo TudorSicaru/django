@@ -55,13 +55,16 @@ class GenericOperationView(APIView):
             cache.set(op_hash, (ret_code, result))
         else:
             logger.error(f'Data validation failed!\n{serializer.errors}')
-            return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+            response = {k: v for k, v in serializer.data.items()}
+            response['ret_code'] = 1
+            response['result'] = '  |  '.join(f'{key}: {val[0]}' for key, val in serializer.errors.items())
+            return Response(response, status.HTTP_400_BAD_REQUEST)
 
         if not ret_code:
             return Response(serializer.validated_data, status.HTTP_200_OK)
 
         logger.error(f"Operation failed!\n{serializer.validated_data}")
-        return Response(result, status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.validated_data, status.HTTP_400_BAD_REQUEST)
 
     def _build_args_list(self, serializer_inst):
         """This helper method builds the list of arguments (1 or 2 args). It's required because subclasses of

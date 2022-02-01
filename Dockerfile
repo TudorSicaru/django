@@ -17,6 +17,7 @@ RUN chmod +x /app/startup.sh
 EXPOSE 8000
 
 # Install redis cache
+RUN apt-get update
 RUN apt-get install -y redis-server
 RUN echo supervised systemd >> /etc/redis/redis.conf
 

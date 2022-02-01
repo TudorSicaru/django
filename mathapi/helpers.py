@@ -70,9 +70,13 @@ def power(base, exponent):
     :type base: float
     :param exponent: A float - the exponent of the power function
     :type exponent: float
-    :return: The result of the power function
+    :return: The result of the power function. It can be int or float depending on the type of the input args
     :rtype: float
     """
+    # Because the builtin pow function can work with really big INTs
+    if int(base) == base and int(exponent) == exponent:
+        return pow(int(base), int(exponent))
+    # If the args are floats, we are limited
     return math.pow(base, exponent)
 
 

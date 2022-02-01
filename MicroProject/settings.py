@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gk=zbqeb6q+y+e=)h_+jn-@*r^%_%lc$w5!687t6yo22yys%gz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']  # Not recommended in production, but if anyone wants to test it on a remote PC..
 
@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ADMINS = [('tudor', 'tudor.django@gmail.com')]
 
-# Send mails using google's server  and an APP password generated for tudor.django
+# Send mails using google's server and an APP password generated for tudor.django
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = 'tudor.django'
