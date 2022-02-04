@@ -4,6 +4,8 @@ to perform different math operations.
 
 
 ###Setup
+
+ * Before building the image, please make sure that the startup.sh script has UNIX line endings (LF), else it will throw errors!
  * First you'll need to install Docker
  * Use docker to create the image based off the Dockerfile:
  ```docker build -t python-django .``` when you are in the same 
